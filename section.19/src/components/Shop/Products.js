@@ -5,8 +5,7 @@ import classes from "./Products.module.css";
 
 const Products = (props) => {
   const dispatch = useDispatch();
-
-  const addToCartHandler = (title, price, description) => {
+  const addToCartHandler = (title, price) => {
     dispatch(
       cartActions.addToCart({ title, quantity: 1, price, total: price })
     );
