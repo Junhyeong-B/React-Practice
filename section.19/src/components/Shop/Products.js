@@ -1,32 +1,34 @@
-import { useDispatch } from "react-redux";
-import { cartActions } from "../../store/cart-slice";
 import ProductItem from "./ProductItem";
 import classes from "./Products.module.css";
 
 const Products = (props) => {
-  const dispatch = useDispatch();
-  const addToCartHandler = (id, title, price) => {
-    dispatch(cartActions.addToCart({ id, title, price }));
-  };
-
+  const productItems = [
+    {
+      id: "p1",
+      title: "Test",
+      price: 6,
+      description: "This is a first product - amazing!",
+    },
+    {
+      id: "p2",
+      title: "TEST Item Second",
+      price: 7,
+      description: "This is amazing!",
+    },
+  ];
   return (
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>
       <ul>
-        <ProductItem
-          id={0}
-          title="Test"
-          price={6}
-          description="This is a first product - amazing!"
-          onClick={addToCartHandler}
-        />
-        <ProductItem
-          id={1}
-          title="#22Test22#"
-          price={7}
-          description="This is a first product - amazing!2222222222"
-          onClick={addToCartHandler}
-        />
+        {productItems.map((item) => (
+          <ProductItem
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            price={item.price}
+            description={item.description}
+          />
+        ))}
       </ul>
     </section>
   );
