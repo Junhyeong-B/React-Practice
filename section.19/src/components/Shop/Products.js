@@ -5,10 +5,8 @@ import classes from "./Products.module.css";
 
 const Products = (props) => {
   const dispatch = useDispatch();
-  const addToCartHandler = (title, price) => {
-    dispatch(
-      cartActions.addToCart({ title, quantity: 1, price, total: price })
-    );
+  const addToCartHandler = (id, title, price) => {
+    dispatch(cartActions.addToCart({ id, title, price }));
   };
 
   return (
@@ -16,12 +14,14 @@ const Products = (props) => {
       <h2>Buy your favorite products</h2>
       <ul>
         <ProductItem
+          id={0}
           title="Test"
           price={6}
           description="This is a first product - amazing!"
           onClick={addToCartHandler}
         />
         <ProductItem
+          id={1}
           title="#22Test22#"
           price={7}
           description="This is a first product - amazing!2222222222"

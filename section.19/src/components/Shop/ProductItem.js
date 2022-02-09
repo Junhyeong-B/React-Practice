@@ -5,14 +5,14 @@ import Card from "../UI/Card";
 import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { id, title, price, description } = props;
   const cartList = useSelector((state) => state.cart.cartItems);
   const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
     if (!cartList.filter((item) => item.title === title).length) {
-      props.onClick && props.onClick(title, price, description);
+      props.onClick && props.onClick(id, title, price);
     } else {
       dispatch(cartActions.increaseItem(title));
     }
